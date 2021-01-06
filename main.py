@@ -21,41 +21,47 @@ user_choice = None
 
 tries = 1
 
+selected_numbers = []
+
 while user_choice != win_number:
     os.system("cls")
     try:
         print("Try nr", tries, "\n\n")
         user_choice = GetNumber()
+
         # possibilities of choices
         if user_choice == win_number:
             break
 
         elif user_choice > 100 or user_choice < 1:
-            print("My number is only in ranges from 1 to 100...")
+            print("\nMy number is only in ranges from 1 to 100...")
+        
+        elif user_choice in selected_numbers:
+            print("\nThis number was selected by you, please try another...")
         
         elif user_choice < win_number:
-            os.system("cls")
-            print("My number is higher...")
+            print("\nMy number is higher...")
             tries += 1
         
         elif user_choice > win_number:
-            os.system("cls")
-            print("My number is lower...")
+            print("\nMy number is lower...")
             tries += 1
 
         else:
-            print("Something goes wrong....")
+            print("\nSomething goes wrong....")
     
     except ValueError:
         print("You must choose number from 1 to 100! TRY AGAIN!")
-        continue
 
     time.sleep(2)
+
+    # added user choice number to selectet numbers
+    selected_numbers.append(user_choice)
 
 # End of the game and congratulations
 
 os.system("cls")
 
-print("Congratulations! \n\n\nMy number is", str(win_number) + "!","\n\nYou'll make it in", str(tries),"tries!", "\n\nSee you soon and have a nice day!")
+print("Congratulations! \n\n\nMy number is", str(win_number) + "!","\n\nYou'll make it in", str(tries),"tries!")
     
 time.sleep(4)

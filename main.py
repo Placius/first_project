@@ -9,11 +9,22 @@ import random, os, time
 
 win_number = int(random.randint(1,100))
 
-# creating a definition to getting number from user
+# getting number from user
 
 def GetNumber():
     user_choice_number = int(input("Make your choice: "))
     return user_choice_number
+
+# final points
+
+def EndPoints(tries):
+    max_points = 11
+
+    if tries >= 10:
+        print("Unfortunetly your score for end is 0.")
+    
+    else:
+        print("Congratulations, you've got", max_points - tries, "points for the end results!")
 
 # creating a game course
 
@@ -63,5 +74,7 @@ while user_choice != win_number:
 os.system("cls")
 
 print("Congratulations! \n\n\nMy number is", str(win_number) + "!","\n\nYou'll make it in", str(tries),"tries!")
+
+EndPoints(tries)
     
 time.sleep(4)
